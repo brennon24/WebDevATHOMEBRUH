@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Form Validation</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-800 text-white p-8 font-mono">
+
+	<h1 class="text-3xl mb-6">FORM</h1>
+
+	<form id="myForm" class="space-y-4 w-80">
+		<div>
+			<label class="block mb-1">Enter your name:</label>
+			<input id="nameField" type="text" class="w-full p-2 rounded text-black">
+			<p id="errorMessage" class="text-red-400 text-sm mt-1 hidden">This field is required.</p>
+		</div>
+
+		<button type="submit" class="bg-teal-500 py-2 px-4 rounded">Submit</button>
+	</form>
+
+	<script>
+		document.getElementById("myForm").addEventListener("submit", function (event) {
+			event.preventDefault(); // stop form from submitting
+
+			const nameField = document.getElementById("nameField");
+			const errorMessage = document.getElementById("errorMessage");
+
+			if (nameField.value.trim() === "") {
+				// show error
+				errorMessage.classList.remove("hidden");
+				nameField.classList.add("border", "border-red-500");
+			} else {
+				// remove error and allow submission (or show success)
+				errorMessage.classList.add("hidden");
+				nameField.classList.remove("border", "border-red-500");
+
+				alert("Form submitted successfully!");
+			}
+		});
+	</script>
+
+</body>
+
+</html>
